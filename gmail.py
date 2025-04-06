@@ -74,7 +74,7 @@ if __name__ == "__main__":
                 if len(tags_check):
                     if DEBUG:
                         tags_history = driver.find_elements(By.XPATH, """//span[contains(.,'履歴を表示')]""")
-                        if len(tags_history) == len(tags_check):
+                        if len(tags_history) != len(tags_check):
                             write_log(
                                 f"❓ ボタンが{len(tags_history)}個のうち{len(tags_check)}個しか見つかりませんでした。\n"
                             )
