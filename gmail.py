@@ -58,6 +58,7 @@ if __name__ == "__main__":
 
         # 上から順番にPOP3アカウントのポーリングを行う。
         driver.get(SETTINGS)
+        write_log("🌐 起動しました。\n")
         while True:
             try:
                 if NIGHTMIN <= datetime.datetime.now().hour < NIGHTMAX:
