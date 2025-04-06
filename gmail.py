@@ -57,13 +57,13 @@ if __name__ == "__main__":
         driver.implicitly_wait(WAITLONG)
 
         # 上から順番にPOP3アカウントのポーリングを行う。
+        driver.get(SETTINGS)
         while True:
             try:
                 if NIGHTMIN <= datetime.datetime.now().hour < NIGHTMAX:
                     time.sleep(WAITLONG + random.uniform(0, WAITLONG))
                 else:
                     time.sleep(WAITTIME + random.uniform(0, WAITTIME))
-                driver.get(SETTINGS)
                 if "Sign in - Google Accounts" in driver.title:
                     write_log("❌ ログイン画面が表示されました。\n")
                     break
@@ -91,6 +91,7 @@ if __name__ == "__main__":
                             break
                 else:
                     write_log("⚠️ ボタンが見つかりませんでした。\n")
+                    driver.get(SETTINGS)
                     continue
             except WebDriverException as e:
                 write_log(f"❌ 実行中エラー {type(e).__name__} - {e}")
